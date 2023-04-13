@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="card-inner">
+        <div class="maintitle">
+            <h1> Login Form</h1>
+        </div>
+        <form action="">
+            <div ngModelGroup name="login"  #login="ngModelGroup">
+                <label class="m-2"> Username : </label><br/>
+                <input required type="text" class="Firstname" placeholder="Please enter your Username" ngModel  name="firstname" #firstname="ngModel"/><br/>
+                <p class="error" *ngIf="firstname.touched && !firstname.dirty">This field is required</p>
+            
+                <label class="m-2"> Password :</label><br/>
+                <input required type="password"   class="password" placeholder="Please enter your lastname" ngModel name="password" #password="ngModel"/><br/>
+                <p class="error" *ngIf="password.touched && !password.dirty">This field is required</p>
+                <br/>
+            </div>
+        </form>
+
+
+        <div class="submit">
+            <button routerLink="contact" (click)="show(login)" [disabled]="!login.valid">Save</button>
+        </div>
+        <br/>
+    </div>
+</div>

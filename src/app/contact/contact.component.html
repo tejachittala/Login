@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-inner">
+        <div class="maintitle">
+            <h1> Contact Form</h1>
+        </div>
+        <form [formGroup]=" contactForm">
+            <div>
+                <label class="m-2"> Name : </label><br />
+                <input required type="text" class="Firstname" placeholder="Please enter your Name"
+                    formControlName="uname" /><br />
+                <!-- <p class="error" *ngIf="firstname.touched && !firstname.dirty">This field is required</p> -->
+
+                <label class="m-2"> Contact Number : </label><br />
+                <input required type="number" class="Firstname" placeholder="Please enter contact number"
+                    formControlName="contact" /><br />
+                <!-- <p class="error" *ngIf="firstname.touched && !firstname.dirty">This field is required</p> -->
+
+                <label class="m-2"> Address :</label><br />
+                <input required type="text" class="password" formControlName="address" /><br />
+                <!-- <p class="error" *ngIf="password.touched && !password.dirty">This field is required</p> -->
+                <br />
+            </div>
+        </form>
+
+
+        <div class="submit">
+            <button (click)="show(contactForm)">Save</button>
+        </div>
+        <br />
+    </div>
+</div>
