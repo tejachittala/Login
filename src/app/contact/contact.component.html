@@ -6,17 +6,19 @@
         <form [formGroup]="this.contactForm">
             <div>
                 <label class="m-2"> Name : </label><br />
-                <input required type="text" class="Firstname" placeholder="Please enter your Name"
+                <input  type="text" class="Firstname" placeholder="Please enter your Name"
                     formControlName="uname" /><br />
-                <!-- <p class="error" *ngIf="firstname.touched && !firstname.dirty">This field is required</p> -->
+                 <div class="error" *ngIf="this.contactForm.get('uname')?.touched && this.contactForm.get('uname')?.hasError('required')">This field is required</div>
+                 <div class="error" *ngIf="this.contactForm.get('uname')?.touched && this.contactForm.get('uname')?.hasError('minlength')">Minimum of 4 characters are requied</div>
+                 <div class="error" *ngIf="this.contactForm.get('uname')?.touched && this.contactForm.get('uname')?.hasError('maxlength')">Maximum of 8 characters are allowed</div>
 
                 <label class="m-2"> Contact Number : </label><br />
-                <input required type="number" class="Firstname" placeholder="Please enter contact number"
+                <input  type="number" class="Firstname" placeholder="Please enter contact number"
                     formControlName="contact" /><br />
                 <!-- <p class="error" *ngIf="firstname.touched && !firstname.dirty">This field is required</p> -->
 
                 <label class="m-2"> Address :</label><br />
-                <input required type="text" class="password" formControlName="address" /><br />
+                <input  type="text" class="password" formControlName="address" /><br />
                 <!-- <p class="error" *ngIf="password.touched && !password.dirty">This field is required</p> -->
                 <br />
             </div>
