@@ -3,23 +3,40 @@
         <div class="maintitle">
             <h1> Contact Form</h1>
         </div>
-        <form [formGroup]="this.contactForm">
+        <form [formGroup]="contactForm">
             <div>
                 <label class="m-2"> Name : </label><br />
-                <input  type="text" class="Firstname" placeholder="Please enter your Name"
+                <input type="text" class="Firstname" placeholder="Please enter your Name"
                     formControlName="uname" /><br />
-                 <div class="error" *ngIf="this.contactForm.get('uname')?.touched && this.contactForm.get('uname')?.hasError('required')">This field is required</div>
-                 <div class="error" *ngIf="this.contactForm.get('uname')?.touched && this.contactForm.get('uname')?.hasError('minlength')">Minimum of 4 characters are requied</div>
-                 <div class="error" *ngIf="this.contactForm.get('uname')?.touched && this.contactForm.get('uname')?.hasError('maxlength')">Maximum of 8 characters are allowed</div>
+                <div class="error"
+                    *ngIf="contactForm.get('uname')?.touched && contactForm.get('uname')?.hasError('required')">
+                    This field is required</div>
+                <div class="error"
+                    *ngIf="contactForm.get('uname')?.touched && contactForm.get('uname')?.hasError('minlength')">
+                    Minimum of 4 characters are requied</div>
+                <div class="error"
+                    *ngIf="contactForm.get('uname')?.touched && contactForm.get('uname')?.hasError('maxlength')">
+                    Maximum of 8 characters are allowed</div>
 
-                <label class="m-2"> Contact Number : </label><br />
-                <input  type="number" class="Firstname" placeholder="Please enter contact number"
-                    formControlName="contact" /><br />
-                <!-- <p class="error" *ngIf="firstname.touched && !firstname.dirty">This field is required</p> -->
+                <div class="dp-flex" formArrayName="contact">
+                    <div *ngFor="let m of contactForm.get('contact')?.value; let i = index">
+                        <label class="m-2"> Contact Number {{i+1}} : </label><br />
+                        <input type="number" class="Firstname" placeholder="Please enter contact number"
+                            formControlName="{{i}} " />
+                            
+                            <div class="pl-7">
+                                <button (click)="remove(i)"> Delete</button>
+                            </div>
+                            
+                            <br />
+                        <!-- <p class="error" *ngIf="contact +i .touched && i.dirty">This field is required</p>  -->
+                    </div>
+                </div>
+
+                <button (click)="AddContact()"> Add contact </button>
 
                 <label class="m-2"> Address :</label><br />
-                <input  type="text" class="password" formControlName="address" /><br />
-                <!-- <p class="error" *ngIf="password.touched && !password.dirty">This field is required</p> -->
+                <input type="text" class="password" formControlName="address" /><br />
                 <br />
             </div>
         </form>
