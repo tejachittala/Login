@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { Route, RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
+import { ProductsComponent } from './products/products.component';
 const route : Routes = [
   {
     path : '',  component : DashboardComponent
@@ -21,6 +23,9 @@ const route : Routes = [
   },
   {
     path : 'contact',  component : ContactComponent
+  },
+  {
+    path : 'products',  component : ProductsComponent
   },
   {
     path : '**',  component : PageNotFoundComponent
@@ -35,12 +40,14 @@ const route : Routes = [
     ContactComponent,
     PageNotFoundComponent,
     HeaderComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   RouterModule.forRoot(route)
 
   ],
